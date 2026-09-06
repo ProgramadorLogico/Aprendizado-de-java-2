@@ -4,29 +4,19 @@ import java.util.Arrays;
 public class Index {
     public static void main(String[] args) {
 
-        // Variáveis 
+        // Declaração de Variáveis 
 
+        // Declaração de listas
 
+        ArrayList<Aparelho> eletrodomesticos = new ArrayList<> (Arrays.asList(new Televisao("TV de casa")));
 
-        // Variáveis;
-
-        // Listas
-
-        ArrayList<Aparelho> eletrodomesticos = new ArrayList<> ();
-
-        // Listas;
-
-        // Lógica
-
-        eletrodomesticos.add(Televisao());
+        // for para printar a lista
         
         for (int i = 0; i < eletrodomesticos.size(); i++) {
 
             eletrodomesticos.get(i).Ligar();
 
         }
-
-        // Lógica;
 
     }
 
@@ -64,9 +54,9 @@ class Aparelho {
 
 class Televisao extends Aparelho {
 
-    public void Televisao(String nomeRecebido) {
+    public Televisao(String nomeRecebido) {
 
-        super(nome) = nomeRecebido;
+        super(nomeRecebido);
 
     }
 
