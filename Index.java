@@ -38,6 +38,50 @@ public class Index {
 		print(2, "");
 		System.out.println("Olá, " + nomeDoUsuario + ", você tem " + idadeDoUsuario + " anos, você quer tomar um chá, " + nomeDoUsuario + "?");
 
+		// try, catch e finally
+
+		boolean inputDoUsuarioValido1 = false;
+		while (!inputDoUsuarioValido1) {
+
+			try {
+	
+				print(2, "");
+				print(1, "Digite sua idade e aperte enter:");
+				String idadeConceito14 = scanner.nextLine();
+				int idadeConceito14Int = Integer.parseInt(idadeConceito14);
+				
+				if (idadeConceito14Int < 0) {
+				
+					print(2, "");
+					throw new IllegalArgumentException("É impossivel ter idade negativa!");
+					
+				} else {
+				
+					print(2, "");
+					System.out.println("Olá, você tem " + idadeConceito14 + " anos"); 
+					inputDoUsuarioValido1 = true;
+					
+				}
+				
+			} catch (NumberFormatException e) {
+			
+				print(2, "");
+				print(1, "Você digitou algo que não é um número!");
+				
+			} catch (IllegalArgumentException e) {
+
+				print(2, "");
+				print(1, "Você digitou uma idade negativa!");
+				
+			} finally {
+	
+				print(2, "");
+				print(1, "Obrigado por fazer o teste de idade");
+				
+			}
+			
+		}
+
     }
 
     // Função de print
