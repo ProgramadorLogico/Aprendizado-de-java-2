@@ -8,6 +8,10 @@ public class Index {
         // Declaração de Variáveis 
 
         Scanner scanner = new Scanner(System.in);
+        Televisao configuracoesDaTelevisao = new Televisao("TV do usuário");
+        String entradaDoUsuario = null;
+        int entradaDoUsuarioInt = 0;
+        boolean entradaValida = false;
         	       
         // Declaração de listas
 
@@ -82,6 +86,40 @@ public class Index {
 			
 		}
 
+		while (!entradaValida) {
+		
+			print(2, "");
+			print(1, "Digite um comando e aperte enter");
+			print(1, "1 - Ligar TV");
+			print(1, "2 - Conectar WiFi");
+			entradaDoUsuario = scanner.nextLine();
+			
+			try {
+			
+				entradaDoUsuarioInt = Integer.parseInt(entradaDoUsuario);
+				entradaValida = true;
+				
+			} catch (NumberFormatException e) {
+			
+				print(2, "");
+				print(1, "Entrada inválida!");
+			}
+			
+		}
+
+		switch (entradaDoUsuarioInt) {
+			case 1:
+				configuracoesDaTelevisao.Ligar();
+				break;
+			case 2:
+				configuracoesDaTelevisao.seConectarAoWifi();
+				break;
+			default:
+				print(2, "");
+				print(1, "Comando não encontrado");
+				break;
+		}
+
     }
 
     // Função de print
@@ -141,7 +179,7 @@ class Aparelho {
 
 // Classe filho(a)
 
-class Televisao extends Aparelho {
+class Televisao extends Aparelho implements dispositivoConectavel {
 
     public Televisao(String nomeRecebido) {
 
@@ -157,6 +195,12 @@ class Televisao extends Aparelho {
         Index.print(1, "Sintonizando canais...");
 
     }
+
+	@Override
+	public void seConectarAoWifi() {
+		Index.print(2, "");
+		Index.print(1, "Conectando-se ao WiFi...");
+	}
 
 }
 
@@ -215,5 +259,12 @@ class cachorro extends animal {
 		System.out.println(reagir);
 		
 	}
+	
+}
+
+// Cria um contrato do que o objeto faz
+interface dispositivoConectavel {
+
+	void seConectarAoWifi();
 	
 }
